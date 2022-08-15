@@ -2,6 +2,8 @@ import { Component } from 'react';
 import { nanoid } from 'nanoid';
 
 import { ContactsForm } from './ContactsForm/ContactsForm';
+import { ContactsList } from './ContactsList/ContactsList';
+import { Filter } from './Filter/Filter';
 
 
 export class App extends Component {
@@ -30,7 +32,7 @@ export class App extends Component {
       .sort((a, b) => a.name.localeCompare(b.name));
   };
 
-  formSubmit = ({ name, number }) = > {
+  formSubmit = ({ name, number }) => {
     this.setState(prevState => {
       const { contacts } = prevState;
       const isContact = contacts.find(contact => contact.name === name);
@@ -74,12 +76,12 @@ export class App extends Component {
 
         <h2>Contacts</h2>
         <Filter
-        <Title>Find contact by name</Title>
+        title="Find contact by name"
         onChange={this.handleFilterChange}
         value={filter}
         />
 
-        <ContactList
+        <ContactsList
           filteredContacts={this.filteredContacts(filter)}
           onDelete={this.contactsDelete}
         />
