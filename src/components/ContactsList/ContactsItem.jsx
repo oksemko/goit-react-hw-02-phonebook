@@ -1,14 +1,17 @@
 import PropTypes from 'prop-types';
 
+import { Button, ContactsElement, Span } from './ContactsList.styled';
+
 export const ContactsItem = ({ contact, onDelete }) => {
   const { id, name, number } = contact;
   return (
     <ContactsElement>
-      <span>{name}: {number}</span>
+      <Span>{name}:</Span>
+      <Span>{number}</Span>
       <Button type="button"
         id={id}
         onClick={event => {
-          onDelete(event.target.id);
+          onDelete(event.target.id)
         }}
       >
         Delete
@@ -17,11 +20,11 @@ export const ContactsItem = ({ contact, onDelete }) => {
   );
 };
 
-ContactsItem.proptypes = {
-  contact: propTypes.shape({
+ContactsItem.propTypes = {
+  contact: PropTypes.shape({
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    number: string.isRequired,
+    number: PropTypes.string.isRequired,
   }),
   onDelete: PropTypes.func.isRequired,
 }

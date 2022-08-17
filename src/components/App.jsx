@@ -5,6 +5,8 @@ import { ContactsForm } from './ContactsForm/ContactsForm';
 import { ContactsList } from './ContactsList/ContactsList';
 import { Filter } from './Filter/Filter';
 
+import { Container, Title } from './App.styled';
+
 
 export class App extends Component {
   state = {
@@ -71,10 +73,10 @@ export class App extends Component {
     const { filter } = this.state;
     return (
       <Container>
-        <h1>Phoneboo</h1>
+        <Title>Phonebook</Title>
         <ContactsForm onSubmit={this.formSubmit} />
 
-        <h2>Contacts</h2>
+        <Title>Contacts</Title>
         <Filter
         title="Find contact by name"
         onChange={this.handleFilterChange}
@@ -83,15 +85,12 @@ export class App extends Component {
 
         <ContactsList
           filteredContacts={this.filteredContacts(filter)}
-          onDelete={this.contactsDelete}
+          onDelete={this.contactDelete}
         />
       </Container>
     );
   }
 }
-
-
-
 
 
 
