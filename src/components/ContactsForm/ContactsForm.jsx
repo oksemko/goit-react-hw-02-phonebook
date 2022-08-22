@@ -4,19 +4,19 @@ import { Form, Container, Label, Input, Button } from './ContactsForm.styled';
 
 export class ContactsForm extends Component {
   state = {
-    contacts: [],
-    name: ''
+    name: '',
+    number: '',
   };
 
   handleInputChange = event => {
     const { name, value } = event.currentTarget;
-    this.state({ [name]: value });
+    this.setState({ [name]: value });
   };
 
   handleSubmit = event => {
     event.preventDefault();
     this.props.onSubmit(this.state);
-    this.setstate({ name: '', number: '' });
+    this.setState({ name: '', number: '' });
   };
 
 
